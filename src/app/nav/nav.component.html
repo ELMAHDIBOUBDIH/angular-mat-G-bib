@@ -1,0 +1,35 @@
+<mat-sidenav-container class="sidenav-container">
+  <mat-sidenav #drawer class="sidenav" fixedInViewport
+               [attr.role]="(isHandset$ | async) ? 'dialog' : 'navigation'"
+               [mode]="(isHandset$ | async) ? 'over' : 'side'"
+               [opened]="!(isHandset$ | async)">
+    <mat-toolbar style="background: white">
+      <img src="../../assets/images/logo.png" class="logo">
+    </mat-toolbar>
+    <mat-nav-list class="menu-detail">
+      <app-address *ngFor="let item of items" [item]="item"></app-address>
+    </mat-nav-list>
+  </mat-sidenav>
+  <mat-sidenav-content>
+    <mat-toolbar color="primary">
+      <mat-toolbar-row>
+        <button
+          type="button"
+          aria-label="Toggle sidenav"
+          mat-icon-button
+          (click)="drawer.toggle()"
+          *ngIf="!(isHandset$ | async)">
+          <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
+        </button>
+        <span>Gestion Bibliothèque</span>
+        <span class="example-spacer"></span>
+        <button mat-mini-fab aria-label="icon-button with a heart icon" (click)="logout()">
+          <mat-icon class="example-icon" aria-hidden="false" aria-label="Example heart icon">power_settings_new
+          </mat-icon>
+        </button>
+      </mat-toolbar-row>
+    </mat-toolbar>
+    <!-- Add Content Here -->
+    <router-outlet></router-outlet>
+  </mat-sidenav-content>
+</mat-sidenav-container>

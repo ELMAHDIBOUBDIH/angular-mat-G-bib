@@ -1,0 +1,25 @@
+/* Structure */
+table {
+  width: 100%;
+}
+
+.mat-form-field {
+  font-size: 14px;
+  width: 100%;
+  padding: 15px;
+}
+.md-table-thumbs img {
+  overflow: hidden;
+  width: 40px;
+  height: 40px;
+  border-radius: 20px;
+  border: 1px solid rgba(0,0,0,0.2);
+  background-size: cover;
+  box-shadow: 0 8px 10px rgba(0,0,0,.3);
+  -webkit-box-shadow: 0 8px 10px rgba(0,0,0,.1);
+}
+.md-table-thumbs {
+  max-width: 97px;
+  width: 104px;
+  padding: 12px 32px;
+}

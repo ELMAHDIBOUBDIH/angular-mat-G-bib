@@ -1,0 +1,17 @@
+.mat-form-field {
+  font-size: 14px;
+  width: 100%;
+}
+
+.mat-dialog-actions {
+  padding: 31px 0;
+}
+
+.mat-card:not([class*=mat-elevation-z]) {
+  box-shadow: none;
+}
+
+.row {
+  padding-bottom: 10px;
+  padding-top: 10px;
+}

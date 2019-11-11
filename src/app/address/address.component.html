@@ -1,0 +1,14 @@
+<mat-list-item (click)="more()" [ngStyle]="{'padding-left': (depth * 12) + 'px'}"
+               [routerLink]="item.route">
+  <h4 mat-line>{{item.displayName}}</h4>
+  <mat-icon matListIcon>{{item.iconName}}</mat-icon>
+  <span fxFlex *ngIf="item.children && item.children.length">
+           <span fxFlex></span>
+           <mat-icon [@indicatorRotate]="expanded ? 'expanded': 'collapsed'">
+             expand_more
+           </mat-icon>
+        </span>
+</mat-list-item>
+<div *ngIf="expanded">
+  <mat-list-item *ngFor="let child of item.children" [routerLink]="child.route">{{child.displayName}}</mat-list-item>
+</div>

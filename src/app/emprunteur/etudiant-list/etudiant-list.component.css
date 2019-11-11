@@ -1,0 +1,26 @@
+.container{
+  padding: 3%;
+}
+/* Structure */
+table {
+  width: 100%;
+}
+
+.mat-form-field {
+  font-size: 14px;
+  width: 100%;
+}
+button{
+  margin: 5px;
+}
+::ng-deep .mat-checkbox .mat-checkbox-frame {
+  border-color: violet;
+}
+
+::ng-deep .mat-checkbox-checked .mat-checkbox-background {
+  background-color: #ff1b10 !important;
+}
+
+::ng-deep .mat-select-disabled .mat-select-value {
+  color: black;
+}

@@ -1,0 +1,106 @@
+<mat-card>
+  <div class="row">
+    <div class="col-md-12">
+      <mat-card-header>
+        <mat-card-title>Ajouter un Emprunteur</mat-card-title>
+      </mat-card-header>
+      <form [formGroup]="EmprunteurForm">
+        <mat-card-content>
+          <div class="row">
+            <div class="col-md-6">
+              <mat-form-field class="full-width">
+                <input matInput placeholder="Nom" formControlName="nom">
+                <mat-error *ngIf="EmprunteurForm.controls['nom'].hasError('required')">
+                  name is <strong>required</strong>
+                </mat-error>
+                <mat-error
+                  *ngIf="EmprunteurForm.controls['nom'].hasError('maxlength')">
+                  Nom max :50 characters
+                </mat-error>
+              </mat-form-field>
+            </div>
+            <div class="col-md-6">
+              <mat-form-field class="full-width">
+                <input matInput placeholder="Prenom" formControlName="prenom">
+                <mat-error *ngIf="EmprunteurForm.controls['prenom'].hasError('required')">
+                  prenom is <strong>required</strong>
+                </mat-error>
+                <mat-error *ngIf="EmprunteurForm.controls['prenom'].hasError('maxlength')">
+                  prenom max :50 characters
+                </mat-error>
+              </mat-form-field>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-6">
+              <mat-form-field class="full-width">
+                <input matInput placeholder="CNE" formControlName="cne">
+                <mat-error *ngIf="EmprunteurForm.controls['cne'].hasError('required')">
+                  name is <strong>required</strong>
+                </mat-error>
+                <mat-error *ngIf="EmprunteurForm.controls['cne'].hasError('maxlength')">
+                  cne min:10 characters
+                </mat-error>
+                <mat-error *ngIf="EmprunteurForm.controls['cne'].hasError('pattern')">
+                  format invalid
+                </mat-error>
+              </mat-form-field>
+            </div>
+            <div class="col-md-6">
+              <mat-form-field class="full-width">
+                <input matInput placeholder="CIN" formControlName="cin">
+                <mat-error *ngIf="EmprunteurForm.controls['cin'].hasError('required')">
+                  name is <strong>required</strong>
+                </mat-error>
+                <mat-error *ngIf="EmprunteurForm.controls['cin'].hasError('maxlength')">
+                  Nom max :6 characters
+                </mat-error>
+              </mat-form-field>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-4">
+              <mat-form-field>
+                <mat-label>Etablissement</mat-label>
+                <mat-select formControlName="etablis" [(ngModel)]="etablis" (selectionChange)="getFilierByEtablis()">
+                  <mat-option *ngFor="let item of etablissements" [value]="item.id">
+                    {{item.name}}
+                  </mat-option>
+                </mat-select>
+              </mat-form-field>
+            </div>
+            <div class="col-md-2">
+              <button mat-mini-fab (click)="openDialog('établissement',null)" type="button">
+                <mat-icon>add</mat-icon>
+              </button>
+            </div>
+            <div class="col-md-4">
+              <mat-form-field>
+                <mat-label>filière</mat-label>
+                <mat-select formControlName="filiere" [(ngModel)]="filiere"
+                            [disabled]="!(Filieres.length>0) && (filiere == null)">
+                  <mat-option *ngFor="let item of Filieres" [value]="item.id">
+                    {{item.name}}
+                  </mat-option>
+                </mat-select>
+              </mat-form-field>
+            </div>
+            <div class="col-md-2" *ngIf="etablis!=null">
+              <button mat-mini-fab (click)="openDialog('filière',etablis)" type="button">
+                <mat-icon>add</mat-icon>
+              </button>
+            </div>
+          </div>
+        </mat-card-content>
+        <mat-dialog-actions *ngIf="typeDialog=='store'">
+          <button class="mat-raised-button" (click)="close(null)" type="button">Annuler</button>
+          <button class="mat-raised-button mat-primary" type="submit" (click)="store()">Enregistrer</button>
+        </mat-dialog-actions>
+        <mat-dialog-actions *ngIf="typeDialog=='edit'">
+          <button class="mat-raised-button" (click)="close(null)" type="button">Annuler</button>
+          <button class="mat-raised-button mat-primary" type="submit" (click)="update()">Modifier</button>
+        </mat-dialog-actions>
+      </form>
+    </div>
+  </div>
+</mat-card>

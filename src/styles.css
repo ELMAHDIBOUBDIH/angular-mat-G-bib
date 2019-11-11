@@ -1,0 +1,28 @@
+/* You can add global styles to this file, and also import other style files */
+@import "~@angular/material/prebuilt-themes/deeppurple-amber.css";
+@import "~bootstrap/dist/css/bootstrap.css";
+@import "~ng-pick-datetime/assets/style/picker.min.css";
+body{
+  margin: 0px;
+}
+
+html, body { height: 100%; }
+.login-body {
+  background-image: url("app/Upload/bib.jpg");
+  border-radius: 100%;
+  background-size: cover;
+  background-position: center center;
+  background-repeat: no-repeat;
+  margin: 0;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+}
+.body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+.ng-hide{
+  visibility: hidden;
+}
+.mat-expansion-panel{
+  background: #f5f5f5;
+}
+.mat-expansion-panel-header-title{
+  font-size: 17px;
+}

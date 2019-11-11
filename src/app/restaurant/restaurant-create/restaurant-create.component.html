@@ -1,0 +1,93 @@
+<form [formGroup]="RestoForm" novalidate (ngSubmit)="onSubmit()">
+  <mat-card class="shipping-card">
+    <mat-card-header>
+      <mat-card-title>
+        Ajouter un Restaurant
+      </mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+      <div class="row">
+        <div class="col">
+          <mat-form-field class="full-width">
+            <input matInput placeholder="name" formControlName="name">
+            <mat-error *ngIf="RestoForm.controls['name'].hasError('required')">
+              name is <strong>required</strong>
+            </mat-error>
+            <mat-error *ngIf="RestoForm.controls['name'].hasError('minlength')">
+              name must be at least 6 characters
+            </mat-error>
+          </mat-form-field>
+        </div>
+        <div class="col">
+          <mat-form-field class="full-width">
+            <input matInput placeholder="code Postal" formControlName="codePostal">
+            <mat-error *ngIf="RestoForm.controls['codePostal'].hasError('required')">
+              code Postal is <strong>required</strong>
+            </mat-error>
+            <mat-error *ngIf="RestoForm.controls['codePostal'].hasError('minlength')">
+              code Postal must be at least 4 characters
+            </mat-error>
+          </mat-form-field>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col">
+          <mat-form-field class="full-width">
+            <input matInput placeholder="latitude" formControlName="latitude">
+            <mat-error *ngIf="RestoForm.controls['latitude'].hasError('required')">
+              latitude is <strong>required</strong>
+            </mat-error>
+          </mat-form-field>
+        </div>
+        <div class="col">
+          <mat-form-field class="full-width">
+            <input matInput type="text" placeholder="longitude" formControlName="longitude">
+            <mat-error *ngIf="RestoForm.controls['longitude'].hasError('required')">
+              longitude is <strong>required</strong>
+            </mat-error>
+          </mat-form-field>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col">
+          <mat-form-field class="full-width">
+            <textarea matInput placeholder="Address" formControlName="address"
+                      mat-row="3">
+            </textarea>
+            <mat-error *ngIf="RestoForm.controls['address'].hasError('required')">
+              Address is <strong>required</strong>
+            </mat-error>
+          </mat-form-field>
+        </div>
+        <div class="col">
+          <mat-form-field class="full-width">
+            <input matInput placeholder="Ville" formControlName="ville">
+            <mat-error *ngIf="RestoForm.controls['ville'].hasError('required')">
+              Ville is <strong>required</strong>
+            </mat-error>
+          </mat-form-field>
+        </div>
+      </div>
+    </mat-card-content>
+    <mat-card-content>
+      <div class="row">
+        <div class="col">
+          <input type="file" multiple id="uploader" (change)="onFileSelected($event)" accept="image/*"  />
+          <mat-list>
+            <h3 mat-subheader>Images</h3>
+            <mat-list-item *ngFor="let item of imageList; let i = index">
+              <img mat-list-avatar src="http://localhost:3000/api/getImage/{{item.filename}}" alt="..." >
+              <h4 mat-line>{{item.originalname | slice:0:30}}</h4>
+              <button (click)="deleteImage(i)" mat-raised-button type="button">
+                <mat-icon >delete</mat-icon>
+              </button>
+            </mat-list-item>
+          </mat-list>
+        </div>
+      </div>
+    </mat-card-content>
+    <mat-card-actions>
+      <button mat-raised-button color="primary" type="submit">Submit</button>
+    </mat-card-actions>
+  </mat-card>
+</form>

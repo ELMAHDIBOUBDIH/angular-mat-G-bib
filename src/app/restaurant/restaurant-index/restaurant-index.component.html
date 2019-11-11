@@ -1,0 +1,68 @@
+<mat-card>
+  <mat-card-header>
+    <mat-card-title>Restaurant</mat-card-title>
+  </mat-card-header>
+  <mat-card-content>
+    <button mat-raised-button routerLink="/resto/add">
+      <mat-icon>add</mat-icon>
+      Ajouter
+    </button>
+    <mat-form-field>
+      <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Filter">
+    </mat-form-field>
+    <table mat-table  matSort aria-label="Elements"
+           [dataSource]="dataSource" class="mat-elevation-z8">
+
+      <ng-container matColumnDef="img">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header></th>
+        <td mat-cell *matCellDef="let row" width="25%" class="md-table-thumbs" >
+          <img  src="http://localhost:3000/api/getImage/{{row.img1}}" alt="..." >
+        </td>
+      </ng-container>
+      <!-- Id Column-->
+      <ng-container matColumnDef="name">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header>name</th>
+        <td mat-cell *matCellDef="let row" width="25%">
+          <input matInput [(ngModel)]="row.name"
+                 readonly="true" ondblclick="this.readOnly='';" onblur="this.readOnly=true;">
+        </td>
+      </ng-container>
+
+      <!-- ville Column -->
+      <ng-container matColumnDef="ville">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header>ville</th>
+        <td mat-cell *matCellDef="let row">{{row.ville}}</td>
+      </ng-container>
+
+      <!-- codePostal Column -->
+      <ng-container matColumnDef="codePostal">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header>code Postal</th>
+        <td mat-cell *matCellDef="let row">{{row.codePostal}}</td>
+      </ng-container>
+
+      <!-- Address Column -->
+      <ng-container matColumnDef="address">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header>address</th>
+        <td mat-cell *matCellDef="let row">{{row.address}}</td>
+      </ng-container>
+      <!-- Address Action -->
+      <ng-container matColumnDef="actions">
+        <th mat-header-cell  *matHeaderCellDef > Actions </th>
+        <td *matCellDef="let row" >
+          <button mat-raised-button color="primary" [routerLink]="'/plat/create/'+row.id">
+            <mat-icon class="material-icons" >add</mat-icon>
+            <mat-icon class="material-icons" >room_service</mat-icon>
+          </button>
+          <button mat-raised-button color="accent" [routerLink]="'/plat/index/'+row.id">
+            <mat-icon class="material-icons" >list_alt</mat-icon>
+          </button>
+        </td>
+      </ng-container>
+
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+    </table>
+    <mat-paginator [length]="3" [pageSize]="5" [pageSizeOptions]="[5, 10, 25, 100]">
+    </mat-paginator>
+  </mat-card-content>
+</mat-card>

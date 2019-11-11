@@ -1,0 +1,39 @@
+.full-width {
+  width: 100%;
+}
+
+.mat-radio-button {
+  display: block;
+  margin: 5px 0;
+}
+
+.col {
+  flex: 1;
+  margin-right: 20px;
+}
+
+.col:last-child {
+  margin-right: 0;
+}
+
+:host {
+  /*display: flex;
+  justify-content: center;
+  margin: 0px 0px;*/
+}
+
+.mat-form-field {
+  width: 100%;
+  min-width: auto;
+}
+
+mat-card {
+  top: 150px;
+  margin-left:15%;
+  margin-right: 15%;
+}
+
+mat-card-header {
+  display: block;
+  text-align: center;
+}

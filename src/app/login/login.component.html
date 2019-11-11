@@ -1,0 +1,31 @@
+<mat-card>
+  <mat-card-title>Login</mat-card-title>
+  <mat-card-content>
+    <form [formGroup]="Form" (ngSubmit)="signin()">
+      <p>
+        <mat-form-field>
+          <input type="email" matInput placeholder="email" formControlName="email">
+        </mat-form-field>
+      </p>
+
+      <p>
+        <mat-form-field>
+          <input type="password" matInput placeholder="Password" formControlName="password">
+        </mat-form-field>
+      </p>
+
+      <p *ngIf="error" class="error">
+        {{ error }}
+      </p>
+      <button mat-raised-button color="primary" type="submit" class="button">Se connecter</button>
+    </form>
+  </mat-card-content>
+  <div style="border:1px solid black;height:1px;width:300px;"></div>
+  <br>
+  <div class="row">
+    <div class="col-lg-12">
+      <p>vous n'avez pas encore de compte ? <a routerLink="/register">créez-en un !</a></p>
+      <p>j'ai oublié mon <a href="#">mot de passe?</a></p>
+    </div>
+  </div>
+</mat-card>
